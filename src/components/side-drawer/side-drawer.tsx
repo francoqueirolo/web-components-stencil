@@ -1,15 +1,19 @@
-import { Component } from '@stencil/core';
-import { h } from '@stencil/core';
+import { h, Component, Prop } from '@stencil/core';
 @Component({
   tag: 'uc-side-drawer',
   styleUrl: './side-drawer.css',
   shadow: true
 })
 export class SideDrawer {
+  @Prop({reflect: true}) title: string;
+
   render() {
     return (
       <aside>
-        <h1>The Side Drawer</h1>
+        <header><h1>{this.title}</h1></header>
+        <main>
+          <slot />
+        </main>
       </aside>
     );
   }
